@@ -267,7 +267,15 @@ Solution : gérer avec if ou bien utiliser du calcul symbolique
 
 * Déterministe ou probabiliste
 (déterministe : la sortie c'est toujours vrai, en executant deux fois les mêmes input -> output ne change pas) </br>
-(probabiliste : la sortie est un approximatif, en executant deux fois les mêmes input -> output change un peu, output probable) </br>
+(probabiliste : la sortie est un approximatif càd que parfois il donne des resultats fois </br>
+Parfois même non consistant : en executant deux fois les mêmes input -> output change un peu, output probable) </br>
+MILLER RABIN ALGORITHME +  BASE 2 SEULEMENT (AJOUTER LES AUTRES BASES POUR AMELIORER L'ALGORITHME)
+```C++
+
+```
+
+
+
 * Ecriture (sous forme schématique ou organigrammme, sous forme pseudo-code, sous forme de langage informatique)
  </br> 
 Ref : Un homme dit a son amis, je peux faire de calcul mental rapidement. </br>
