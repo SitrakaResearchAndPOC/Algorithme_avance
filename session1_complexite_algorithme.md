@@ -6,8 +6,7 @@
 (déterministe : la sortie c'est toujours vrai, en executant deux fois les mêmes input -> output ne change pas) </br>
 (probabiliste : la sortie est un approximatif, en executant deux fois les mêmes input -> output change un peu, output probable) </br>
 * Ecriture (sous forme schématique ou organigrammme, sous forme pseudo-code, sous forme de langage informatique)
-
- </br> </br>
+ </br> 
 Ref : Un homme dit a son amis, je peux faire de calcul mental rapidement. </br>
 Son amis réponds, calculer 12*15 </br>
 L'homme reponds, c'est 124 </br>
