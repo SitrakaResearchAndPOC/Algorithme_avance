@@ -49,10 +49,13 @@ La réponse est une fois : C(N) = 1
 
 int main()
 {
-        
+        unsigned int cout = 0;
         printf("bonjour les amis\n");
+        cout++;
         printf("bonjour les amis\n");
+        cout++;
 
+        printf("cout : %u \n", cout);
 }
 ```
 La question qui se pose est : "combien de fois bonjour les amis s'affiche" </br>
@@ -67,9 +70,13 @@ La réponse est une fois : C(N) = 2
 
 int main()
 {
+    unsigned int cout = 0;
     for (int i = 0; i < N; i++){
-        printf("le nombre de cout");
+        printf("%d ) le nombre de cout \n", (i+1));
+        cout++;
     }
+
+    printf("cout : %u \n", cout);
     return 0;
 }
 ```
@@ -91,8 +98,9 @@ pas = 1 car i++ </br>
 
 int main()
 {
+    unsigned int cout = 0;
     for (int i = 0; i < N; i+=2){
-        printf("le nombre de cout");
+        printf("%d) le nombre de cout \n", (i+1));
     }
     return 0;
 }
@@ -112,7 +120,7 @@ C(N) = (N+1)/2
 int main()
 {
     for (int i = 1; i <= N; i*=2){
-        printf("le nombre de cout");
+        printf("%d) le nombre de cout\n", (i+1));
     }
     return 0;
 }
