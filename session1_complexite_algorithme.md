@@ -19,14 +19,14 @@ L'algorithme est une manière de communiquer avec des ordinateurs classique et p
 L'algorithme classique est écrit sous forme d'étape par étape (impératif) </br>
 Exemple : "taper etape par etape comment avoir un pizza " avec chatgpt
 
-* Impératif : (déscription des étapes à faire : variable + fonction )
+* Impératif : (déscription des étapes à faire : variable + fonction comme avec l'intéraction avec le clavier, les souris, les hardwares et certains software ... )
+
 1-Ingrédients pour la pâte : </br>
 250 g de farine </br>
 1 sachet de levure boulangère </br>
 150 ml d'eau tiède </br>
 1 cuillère d'huile d'olive </br>
 1 pincée de sel </br>
-
 2- Préparer la pâte : </br>
 Mélanger farine + levure + sel </br>
 Ajouter eau tiède + huile </br>
@@ -53,8 +53,7 @@ Les ordres sont trés importantes </br>
 Les instructions peuvent être des déclarations, des groupes des déclarations de type different ou structure, des groupes de déclaration de même type ou tableau, des appels et/ou déclaration de fonction, des directifs de préprocesseurs
 
 
-
-* Déclaratif : (déclarer des ordres : requête ou interrogation )
+* Déclaratif : (déclarer des ordres : requête ou interrogation comme les intéractions avec bases des données )
  Si tu veux commander une pizza : </br>
 1-Appeler une pizzeria (par téléphone) ---> SGBDR </br>
 2-Utiliser une application (UberEats, Deliveroo, JustEat, etc.) --> Application pour faire de la requête </br>
