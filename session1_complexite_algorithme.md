@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 10
+#define N 100
 
 int main()
 {
@@ -20,12 +20,31 @@ int main()
 
 }
 ```
+La question qui se pose est : "combien de fois bonjour les amis s'affiche" </n>
+La réponse est une fois : C(n) = 1
 
-```
+``` C
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 10
+#define N 100
+
+int main()
+{
+        printf("bonjour les amis");
+        printf("bonjour les amis");
+
+}
+```
+La question qui se pose est : "combien de fois bonjour les amis s'affiche" </n>
+La réponse est une fois : C(n) = 2
+
+
+``` C
+#include <stdio.h>
+#include <stdlib.h>
+
+#define N 100
 
 int main()
 {
@@ -42,7 +61,7 @@ int main()
 
 # Complexité temporelle
 L'algorithme se repète combien de fois
-```
+``` C
 // Complexité logarithmique : O(log n)
 void logarithmique(int n) {
     while (n > 1) {
