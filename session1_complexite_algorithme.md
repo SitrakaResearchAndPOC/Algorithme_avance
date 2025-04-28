@@ -202,6 +202,7 @@ Pour tester si une lampe est performant, il est possible d'imaginer que si la la
 Mathématiquement parlant : si la lampe est allumée infinie de fois comment le système réagit 
 
 # Complexité temporelle
+
 L'algorithme se repète combien de fois
 ``` C
 // Complexité logarithmique : O(log n)
