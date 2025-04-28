@@ -14,9 +14,63 @@ Son amis dit, mais c'est faux </br>
 L'homme répond, peut-être mais c'est rapide </br>
 </br>
 
-L'algorithme classique est écrit sous forme d'étape par étape !! </br>
+
+L'algorithme est une manière de communiquer avec des ordinateurs classique et peut être en type : impératif ou déclaratif 
+L'algorithme classique est écrit sous forme d'étape par étape (impératif) </br>
+Exemple : "taper etape par etape comment avoir un pizza " avec chatgpt
+
+* Impératif : (déscription des étapes à faire : variable + fonction )
+1-Ingrédients pour la pâte : </br>
+250 g de farine </br>
+1 sachet de levure boulangère </br>
+150 ml d'eau tiède </br>
+1 cuillère d'huile d'olive </br>
+1 pincée de sel </br>
+
+2- Préparer la pâte : </br>
+Mélanger farine + levure + sel </br>
+Ajouter eau tiède + huile </br>
+Pétrir 5–10 minutes </br>
+Laisser reposer 1 heure (que ça gonfle) </br>
+3- Préparer les garnitures : </br>
+Sauce tomate </br>
+Fromage râpé (mozzarella, emmental…) </br>
+Ingrédients au choix : jambon, champignons, légumes, pepperoni, etc. </br>
+3- Assembler : </br>
+Étaler la pâte au rouleau </br>
+Étaler la sauce tomate </br>
+Ajouter fromage + autres ingrédients </br>
+4- Cuire au four :
+Préchauffer le four à 220°C </br>
+Cuire la pizza 10–15 minutes (jusqu’à ce qu’elle soit dorée) </br>
+5-Sortir du four et manger ! </br>
+</br>
+Etape 1 : déclaration de variable </br>
+Etape 2 - Etape 5 : liste des fonctions </br>
+</br></br>
+RQ : </br>
+Les ordres sont trés importantes </br>
+Les instructions peuvent être des déclarations, des groupes des déclarations de type different ou structure, des groupes de déclaration de même type ou tableau, des appels et/ou déclaration de fonction, des directifs de préprocesseurs
 
 
+
+* Déclaratif : (déclarer des ordres : requête ou interrogation )
+ Si tu veux commander une pizza : </br>
+1-Appeler une pizzeria (par téléphone) ---> SGBDR </br>
+2-Utiliser une application (UberEats, Deliveroo, JustEat, etc.) --> Application pour faire de la requête </br>
+3-Aller directement dans une pizzeria --> aller dans menu requête SQL pour taper l'interrogation </br>
+4-Choisir ta pizza préférée : --> Tapez l'interrogation </br>
+Margherita, Pepperoni, 4 Fromages, Végétarienne, etc. </br>
+5-Passer la commande : --> lancer la requête </br>
+6-Donner ton adresse (si livraison) --> donner les conditions et paramètre de requête WHERE et HAVING </br>
+7-Payer (par carte, espèces ou application)   --> donner les conditions et paramètre de requête WHERE et HAVING </br>
+8-Attendre la livraison --> attendre le traitement de SGBDR (pas besoin de plusieurs minutes si c'est une requête SQL ) </br>
+(environ 20–45 minutes selon l'endroit) </br>
+9-Recevoir et déguster ta pizza ! --> obtenir le resultat de la requête sous forme de table </br>
+
+
+* déclaratif : 
+ 
 # Fonction  coût 
 N peut-être la taille d'un tableau ou le nombre d'appel de fonction
 * Example 1
@@ -143,6 +197,10 @@ donc C(N) = k+1 or N = 2^k donc k = log2(N) + 1 = (log(N)/log(2))+1 = (ln(N)/ln(
 
 # Notation de Landeau
 
+La notation de landeau est un critère de performance issue d'une approximation de la fonction coût quand N tends vers infini </br>
+Pourquoi infini? </br>
+Pour tester si une lampe est performant, il est possible d'imaginer que si la lampe est allumée plusieurs fois, comment est l'état de la lampe?
+Mathématiquement parlant : si la lampe est allumée infinie de fois comment le système réagit 
 
 # Complexité temporelle
 L'algorithme se repète combien de fois
