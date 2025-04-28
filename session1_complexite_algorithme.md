@@ -187,11 +187,84 @@ int main() {
 }
 ```
 
-
-
-
-
 * Exactitude (est ce que l'algorithme donne toujours des resultats exacts -> série de test)
+La somme avec overflow :
+```
+#include <stdio.h>
+#include <limits.h> // Pour les limites des types de données
+
+// Fonction pour additionner deux entiers signés
+int somme_entier(int a, int b) {
+    // Vérifier si la somme dépasse la capacité maximale (overflow)
+    if ((b > 0) && (a > INT_MAX - b)) {
+        printf("Overflow détecté pour les entiers signés !\n");    }
+    if ((b < 0) && (a < INT_MIN - b)) {
+        printf("Overflow détecté pour les entiers signés !\n");
+    }
+    return a + b;
+}
+
+// Fonction pour additionner deux entiers non signés
+unsigned int somme_entier_non_signe(unsigned int a, unsigned int b) {
+    // Vérifier si la somme dépasse la capacité maximale pour les entiers non signés
+    if (a > UINT_MAX - b) {
+        printf("Overflow détecté pour les entiers non signés !\n");
+
+    }
+    return a + b;
+}
+
+int main() {
+    // Séries de tests pour les entiers signés (avec et sans overflow)
+    int a1 = 1000, b1 = 2000; // Sans overflow
+    int a2 = INT_MAX - 1, b2 = 2; // Avec overflow (INT_MAX)
+    int a3 = -1000, b3 = -2000; // Sans overflow
+    int a4 = INT_MIN + 1, b4 = -2; // Avec overflow (INT_MIN)
+
+    printf("Test 1 (Sans overflow) : %d + %d = %d\n", a1, b1, somme_entier(a1, b1));
+    printf("Test 2 (Avec overflow) : %d + %d = %d\n", a2, b2, somme_entier(a2, b2));
+    printf("Test 3 (Sans overflow) : %d + %d = %d\n", a3, b3, somme_entier(a3, b3));
+    printf("Test 4 (Avec overflow) : %d + %d = %d\n", a4, b4, somme_entier(a4, b4));
+
+    // Séries de tests pour les entiers non signés (avec et sans overflow)
+    unsigned int c1 = 1000, d1 = 2000; // Sans overflow
+    unsigned int c2 = UINT_MAX - 1, d2 = 2; // Avec overflow (UINT_MAX)
+    unsigned int c3 = 3000, d3 = 4000; // Sans overflow
+    unsigned int c4 = UINT_MAX - 1, d4 = 3; // Maintenant, avec overflow (UINT_MAX)
+
+    printf("Test 5 (Sans overflow) : %u + %u = %u\n", c1, d1, somme_entier_non_signe(c1, d1));
+    printf("Test 6 (Avec overflow) : %u + %u = %u\n", c2, d2, somme_entier_non_signe(c2, d2));
+    printf("Test 7 (Sans overflow) : %u + %u = %u\n", c3, d3, somme_entier_non_signe(c3, d3));
+    printf("Test 8 (Avec overflow) : %u + %u = %u\n", c4, d4, somme_entier_non_signe(c4, d4));
+
+    return 0;
+}
+```
+
+Flottant avec overflow : 
+```
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float x;
+
+    // Demander la valeur de x à l'utilisateur
+    printf("Entrez une valeur pour x : ");
+    scanf("%f", &x);
+
+    // Vérifier si x est égal à 0.000007
+    if (x == 0.000007) {  // Tolérance d'égalité pour float
+        printf("OK\n");
+    } else {
+        printf("NON OK\n");
+    }
+
+    return 0;
+}
+```
+Solution : gérer avec if ou bien utiliser du calcul symbolique
+
 * Déterministe ou probabiliste
 (déterministe : la sortie c'est toujours vrai, en executant deux fois les mêmes input -> output ne change pas) </br>
 (probabiliste : la sortie est un approximatif, en executant deux fois les mêmes input -> output change un peu, output probable) </br>
@@ -270,7 +343,6 @@ Margherita, Pepperoni, 4 Fromages, Végétarienne, etc. </br>
 Algorithme est changement d'etat : etat debut vers etat fin en passant par des etats intermédiaires (c'est une manière de penser pour facilité la resolution de problème avec des algorithmes) <>
 
 
-* déclaratif : 
  
 # Fonction  coût 
 N peut-être la taille d'un tableau ou le nombre d'appel de fonction
