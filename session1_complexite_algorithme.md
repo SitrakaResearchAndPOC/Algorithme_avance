@@ -1,6 +1,196 @@
-# Algorithme 
+# Algorithme  : 
+Dans l'exemple : utilisation de Windows avec CodeBlocks
 * Complexité temporelle (combien de temps)
+Evaluation réelle de complexité temporelle en C (en ms) :
+``` C
+#include <windows.h>
+#include <stdio.h>
+
+int main() {
+    LARGE_INTEGER frequence; // fréquence du compteur haute précision
+    LARGE_INTEGER debut, fin;
+    double temps_ms;
+
+    // Obtenir la fréquence
+    QueryPerformanceFrequency(&frequence);
+
+    // Prendre le temps au début
+    QueryPerformanceCounter(&debut);
+
+    // --------- La boucle à mesurer ---------
+    for (int i = 0; i < 1000000; i++) {
+        // Travail simulé
+    }
+    // ----------------------------------------
+
+    // Prendre le temps à la fin
+    QueryPerformanceCounter(&fin);
+
+    // Calculer le temps en millisecondes
+    temps_ms = (double)(fin.QuadPart - debut.QuadPart) * 1000.0 / frequence.QuadPart;
+
+    printf("Temps de boucle : %.6f millisecondes\n", temps_ms);
+
+    return 0;
+}
+```
+
 * Complexité spaciale (combien de mémoire)
+Ajouter l'option de lien -lpsapi dans Code::Blocks </br>
+Ouvre ton projet dans Code::Blocks </br>
+Va dans : </br>
+Project → Build Options (pas Settings !) </br>
+Sélectionne ton projet à gauche (pas juste "Debug" ou "Release", choisis tout en haut le projet complet) </br>
+Clique sur l'onglet Linker Settings </br>
+Dans "Link libraries" clique sur Add et tape : </br>
+```
+psapi
+```
+(sans le lib ni .a, juste psapi) </br>
+Clique sur OK. </br>
+Complexité spatiale d'un tableau statique, pile, dynamique
+```C
+
+#include <windows.h>
+#include <psapi.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#pragma comment(lib, "psapi.lib")
+
+#define TAILLE_STATIQUE 1000000   // 1 million
+#define TAILLE_PILE 10000         // 10 000 (attention pile limitée)
+#define TAILLE_TAS 1000000        // 1 million
+
+SIZE_T obtenirMemoireUtilisee() {
+    PROCESS_MEMORY_COUNTERS memInfo;
+    GetProcessMemoryInfo(GetCurrentProcess(), &memInfo, sizeof(memInfo));
+    return memInfo.WorkingSetSize;
+}
+
+int main() {
+    SIZE_T memAvant, memApres, memDifference;
+
+    printf("Démarrage du programme...\n");
+
+    memAvant = obtenirMemoireUtilisee();
+    printf("Mémoire avant toute action : %zu Ko\n\n", memAvant / 1024);
+
+    // 1. Tableau statique LOCAL à main()
+    static int tableauStatique[TAILLE_STATIQUE];
+
+    // IMPORTANT : même si le tableau statique est réservé au lancement,
+    // la mémoire physique réelle n'est pas allouée tant qu'on ne lit/écrit pas dedans.
+    // => On initialise explicitement pour forcer son allocation réelle en RAM
+    for (int i = 0; i < TAILLE_STATIQUE; i++) {
+        tableauStatique[i] = i;
+    }
+
+    memApres = obtenirMemoireUtilisee();
+    memDifference = memApres - memAvant;
+    printf("Après initialisation du tableau statique :\n");
+    printf("Mémoire utilisée +%zu Ko\n\n", memDifference / 1024);
+
+    // 2. Tableau sur la pile
+    int tableauPile[TAILLE_PILE];
+
+    for (int i = 0; i < TAILLE_PILE; i++) {
+        tableauPile[i] = i;
+    }
+
+    memAvant = memApres;
+    memApres = obtenirMemoireUtilisee();
+    memDifference = memApres - memAvant;
+    printf("Après initialisation du tableau pile :\n");
+    printf("Mémoire utilisée +%zu Ko\n\n", memDifference / 1024);
+
+    // 3. Tableau sur le tas
+    int* tableauTas = (int*)malloc(TAILLE_TAS * sizeof(int));
+    if (tableauTas == NULL) {
+        printf("Erreur d'allocation du tas !\n");
+        return 1;
+    }
+
+    // Même chose ici : initialiser pour forcer la RAM physique
+    for (int i = 0; i < TAILLE_TAS; i++) {
+        tableauTas[i] = i;
+    }
+
+    memAvant = memApres;
+    memApres = obtenirMemoireUtilisee();
+    memDifference = memApres - memAvant;
+    printf("Après initialisation du tableau tas :\n");
+    printf("Mémoire utilisée +%zu Ko\n\n", memDifference / 1024);
+
+    // Libérer la mémoire du tas
+    free(tableauTas);
+
+    return 0;
+}
+```
+Example 2
+```C
+#include <windows.h>
+#include <psapi.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#pragma comment(lib, "psapi.lib")
+
+SIZE_T obtenirMemoireUtilisee() {
+    PROCESS_MEMORY_COUNTERS memInfo;
+    GetProcessMemoryInfo(GetCurrentProcess(), &memInfo, sizeof(memInfo));
+    return memInfo.WorkingSetSize;
+}
+
+SIZE_T obtenirPicMemoire() {
+    PROCESS_MEMORY_COUNTERS memInfo;
+    GetProcessMemoryInfo(GetCurrentProcess(), &memInfo, sizeof(memInfo));
+    return memInfo.PeakWorkingSetSize; // Mémoire maximale utilisée pendant l'exécution
+}
+
+int main() {
+    SIZE_T memAvant, memApres, memDifference, memPic;
+
+    // Avant allocation
+    memAvant = obtenirMemoireUtilisee();
+    printf("Mémoire avant allocation : %zu Ko\n", memAvant / 1024);
+
+    int *grandTableau = (int*)malloc(1000000 * sizeof(int));
+
+    if (grandTableau == NULL) {
+        printf("Erreur d'allocation mémoire.\n");
+        return 1;
+    }
+
+    // Initialiser pour forcer l'allocation réelle
+    for (int i = 0; i < 1000000; i++) {
+        grandTableau[i] = i;
+    }
+
+    // Après allocation
+    memApres = obtenirMemoireUtilisee();
+    printf("Mémoire après allocation et initialisation : %zu Ko\n", memApres / 1024);
+
+    // Calcul de la différence de mémoire
+    memDifference = memApres - memAvant;
+    printf("Mémoire utilisée par l'allocation : %zu Ko\n", memDifference / 1024);
+
+    // Vérification du pic mémoire utilisé
+    memPic = obtenirPicMemoire();
+    printf("Pic de mémoire utilisée pendant l'exécution : %zu Ko\n", memPic / 1024);
+
+    // Libérer la mémoire
+    free(grandTableau);
+
+    return 0;
+}
+```
+
+
+
+
+
 * Exactitude (est ce que l'algorithme donne toujours des resultats exacts -> série de test)
 * Déterministe ou probabiliste
 (déterministe : la sortie c'est toujours vrai, en executant deux fois les mêmes input -> output ne change pas) </br>
