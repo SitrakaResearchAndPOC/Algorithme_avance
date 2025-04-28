@@ -67,6 +67,9 @@ Margherita, Pepperoni, 4 Fromages, Végétarienne, etc. </br>
 (environ 20–45 minutes selon l'endroit) </br>
 9-Recevoir et déguster ta pizza ! --> obtenir le resultat de la requête sous forme de table </br>
 
+</br> </br>
+Algorithme est changement d'etat : etat debut vers etat fin en passant par des etats intermédiaires (c'est une manière de penser pour facilité la resolution de problème avec des algorithmes) <>
+
 
 * déclaratif : 
  
@@ -193,6 +196,7 @@ donc C(N) = k+1 or N = 2^k donc k = log2(N) + 1 = (log(N)/log(2))+1 = (ln(N)/ln(
 
 ```
 * Example 6
+
 
 # Notation de Landeau
 
