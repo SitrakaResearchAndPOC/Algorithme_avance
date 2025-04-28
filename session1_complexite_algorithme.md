@@ -47,11 +47,11 @@ Cuire la pizza 10–15 minutes (jusqu’à ce qu’elle soit dorée) </br>
 </br>
 Etape 1 : déclaration de variable </br>
 Etape 2 - Etape 5 : liste des fonctions </br>
-</br></br>
+</br>
 RQ : </br>
 Les ordres sont trés importantes </br>
 Les instructions peuvent être des déclarations, des groupes des déclarations de type different ou structure, des groupes de déclaration de même type ou tableau, des appels et/ou déclaration de fonction, des directifs de préprocesseurs
-
+</br>
 
 * Déclaratif : (déclarer des ordres : requête ou interrogation comme les intéractions avec bases des données )
  Si tu veux commander une pizza : </br>
