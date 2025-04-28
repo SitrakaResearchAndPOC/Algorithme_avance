@@ -271,10 +271,196 @@ Solution : gérer avec if ou bien utiliser du calcul symbolique
 Parfois même non consistant : en executant deux fois les mêmes input -> output change un peu, output probable) </br>
 MILLER RABIN ALGORITHME +  BASE 2 SEULEMENT (AJOUTER LES AUTRES BASES POUR AMELIORER L'ALGORITHME)
 ```C++
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
+using namespace std;
+
+// Fonction utilitaire pour faire l'exponentiation modulaire
+int puissance(int x, unsigned int y, int p)
+{
+    int res = 1;
+    x = x % p;  // Mettre à jour x si x est plus grand ou égal à p
+    while (y > 0)
+    {
+        if (y & 1)
+            res = (res * x) % p;
+        y = y >> 1;
+        x = (x * x) % p;
+    }
+    return res;
+}
+
+// Cette fonction est appelée pour chaque essai. Elle renvoie faux si n est composé
+// et renvoie vrai si n est probablement premier.
+// d est un nombre impair tel que d*2^r = n-1 pour un certain r >= 1
+bool testMiller(int d, int n)
+{
+    // Toujours utiliser la base 2 pour la simplicité et pour forcer les faux positifs dans les nombres de Carmichael
+    int a = 2;  // Base fixe 2 seulement
+    // Base non fixe : int a = 2 + rand() % (n - 4);
+
+    // Calculer a^d % n
+    int x = puissance(a, d, n);
+
+    if (x == 1 || x == n - 1)
+        return true;
+
+    // Continuer à élever x au carré tant que l'une des conditions suivantes n'est pas remplie
+    // (i) d n'atteint pas n-1
+    // (ii) (x^2) % n n'est pas égal à 1
+    // (iii) (x^2) % n n'est pas égal à n-1
+    while (d != n - 1)
+    {
+        x = (x * x) % n;
+        d *= 2;
+
+        if (x == 1)
+            return false;
+        if (x == n - 1)
+            return true;
+    }
+
+    return false; // Retourner composé
+}
+
+// Renvoie faux si n est composé et renvoie vrai si n est probablement premier.
+// k est un paramètre d'entrée qui détermine le niveau de précision. Une valeur plus élevée de k indique plus de précision.
+bool estPremier(int n, int k)
+{
+    // Cas particuliers
+    if (n <= 1 || n == 4)
+        return false;
+    if (n <= 3)
+        return true;
+
+    // Trouver r tel que n = 2^d * r + 1 pour un certain r >= 1
+    int d = n - 1;
+    while (d % 2 == 0)
+        d /= 2;
+
+    // Exécuter testMiller k fois, en utilisant la base 2 pour générer le pire cas (faux positifs dans les nombres de Carmichael)
+    for (int i = 0; i < k; i++)
+        if (!testMiller(d, n))
+            return false;
+
+    return true;
+}
+
+int main()
+{
+    int k = 4;  // Définir 1 itération pour forcer des faux positifs possibles rapidement
+
+    // Nombres de Carmichael connus pour générer des faux positifs
+    int nombresCarmichael[] = {561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041};
+
+    cout << "Test des nombres de Carmichael (faux positifs) : \n";
+    for (int i = 0; i < 11; i++)
+    {
+        int n = nombresCarmichael[i];
+        cout << n << ": ";
+        if (estPremier(n, k))
+            cout << "Probablement Premier (Faux Positif)\n";
+        else
+            cout << "Composite (Correct)\n";
+    }
+
+    return 0;
+}
 ```
+Algorithme Fermat (non deterministe)
+```c++
+#include <bits/stdc++.h>
+using namespace std;
 
+// Fonction pour effectuer l'exponentiation modulaire
+long long power(long long x, unsigned int y, long long p) {
+    long long res = 1;
+    x = x % p;
+    while (y > 0) {
+        if (y & 1)
+            res = (res * x) % p;
+        y = y >> 1;
+        x = (x * x) % p;
+    }
+    return res;
+}
 
+// Test de Fermat pour vérifier si n est probablement premier avec base 2
+bool fermatTest(long long n) {
+    if (n <= 1)
+        return false; // Nombres inférieurs à 2 ne sont pas premiers
+    // Base 2 fixe pour le test de Fermat
+    long long base = 2;
+    // Fermat Test : Si a^(n-1) % n != 1, alors n n'est pas premier
+    if (power(base, n - 1, n) != 1)
+        return false;
+    return true;
+}
+
+// Nombres de Carmichael connus
+long long carmichaelNumbers[] = {561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041};
+
+int main() {
+    // Test de Fermat sur les nombres de Carmichael
+    cout << "Test de Fermat avec base 2 sur les nombres de Carmichael :\n";
+    for (long long n : carmichaelNumbers) {
+        cout << n << ": ";
+        if (fermatTest(n))
+            cout << "Probablement premier (faux positif possible)\n";
+        else
+            cout << "Composé (résultat correct)\n";
+    }
+    return 0;
+}
+```
+Algorithme deterministe (crible d'erastothène amelioré)
+```c++
+#include <iostream>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+// Fonction déterministe pour tester la primalité
+bool isPrime(int n) {
+    if (n <= 1) return false;  // Les nombres <= 1 ne sont pas premiers
+    if (n <= 3) return true;   // 2 et 3 sont premiers
+
+    // Si n est divisible par 2 ou 3, ce n'est pas un nombre premier
+    if (n % 2 == 0 || n % 3 == 0) return false;
+
+    // Calcul de la racine carrée de n
+    int sqrt_n = sqrt(n);
+
+    // Vérification des diviseurs premiers jusqu'à sqrt(n)
+    for (int i = 5; i <= sqrt_n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
+            return false; // n est divisible par un autre nombre premier
+        }
+    }
+
+    return true; // n est un nombre premier
+}
+
+int main() {
+    // Liste des nombres de Carmichael
+    vector<int> carmichaelNumbers = {561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041};
+
+    cout << "Test de primalité des nombres de Carmichael (test déterministe) :\n";
+    for (int n : carmichaelNumbers) {
+        cout << n << ": ";
+        if (isPrime(n)) {
+            cout << "Premier\n";
+        } else {
+            cout << "Composé\n";
+        }
+    }
+
+    return 0;
+}
+```
 
 * Ecriture (sous forme schématique ou organigrammme, sous forme pseudo-code, sous forme de langage informatique)
  </br> 
