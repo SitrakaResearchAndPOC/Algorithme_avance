@@ -27,30 +27,39 @@ Exemple : "taper etape par etape comment avoir un pizza " avec chatgpt
 150 ml d'eau tiède </br>
 1 cuillère d'huile d'olive </br>
 1 pincée de sel </br>
+1 sauce tomate </br>
+1 Fromage rapé qui peut être mozzarella, emmental </br>
+1 ingredients composé de jambon, champigons, légumes, pepperoni </br>
+
 2- Préparer la pâte : </br>
 Mélanger farine + levure + sel </br>
 Ajouter eau tiède + huile </br>
 Pétrir 5–10 minutes </br>
 Laisser reposer 1 heure (que ça gonfle) </br>
+
 3- Préparer les garnitures : </br>
 Sauce tomate </br>
 Fromage râpé (mozzarella, emmental…) </br>
-Ingrédients au choix : jambon, champignons, légumes, pepperoni, etc. </br>
+Ingrédients : jambon, champignons, légumes, pepperoni </br>
+
 3- Assembler : </br>
 Étaler la pâte au rouleau </br>
 Étaler la sauce tomate </br>
 Ajouter fromage + autres ingrédients </br>
+
 4- Cuire au four :
 Préchauffer le four à 220°C </br>
 Cuire la pizza 10–15 minutes (jusqu’à ce qu’elle soit dorée) </br>
+
 5-Sortir du four et manger ! </br>
+
 </br>
 Etape 1 : déclaration de variable </br>
 Etape 2 - Etape 5 : liste des fonctions </br>
 </br>
 RQ : </br>
 Les ordres sont trés importantes </br>
-Les instructions peuvent être des déclarations, des groupes des déclarations de type different ou structure, des groupes de déclaration de même type ou tableau, des appels et/ou déclaration de fonction, des directifs de préprocesseurs
+Les instructions peuvent être des déclarations, des groupes des déclarations de type different ou structure, des groupes de déclaration de même type ou tableau, des appels et/ou déclaration de fonction, les ennumerations, des directifs de préprocesseurs
 </br>
 
 * Déclaratif : (déclarer des ordres : requête ou interrogation comme les intéractions avec bases des données )
