@@ -894,7 +894,8 @@ donc C(N) = k+1 or N = 2^k donc k = log2(N) + 1 = (log(N)/log(2))+1 = (ln(N)/ln(
 
 
 # Notation de Landeau
-
+Pour les cas extrème
+cf exemple de la lampe
 
 Vision complexité selon la base :
 si binaire ou base dix
