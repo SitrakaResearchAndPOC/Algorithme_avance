@@ -267,6 +267,7 @@ int main() {
 Solution : gérer avec if ou bien utiliser du calcul symbolique
 
 * Déterministe ou probabiliste + Optimisation algorithmique
+
 IL FAUT GERER AUSSI LES TESTS ET SURTOUT DES METHODES DE CHOIX DE TEST) </br>
 TESTER DES CAS POSSIBLE </br>
 TESTER DES CAS IMPOSSIBLE </br>
@@ -364,8 +365,11 @@ int main() {
 ```
 
 
-(probabiliste : la sortie est un approximatif càd que parfois il donne des resultats fois ou des faux positifs (il pense que c'est vrai mais c'est faux) </br>
-Parfois même non consistant : en executant deux fois les mêmes input -> output change un peu, output probable) </br>
+probabiliste : 
+
+la sortie est un approximatif càd que parfois il donne des resultats fois ou des faux positifs <br>
+(faux positif càd il pense que c'est vrai mais c'est faux) </br>
+Parfois même non consistant : en executant deux fois les mêmes input -> output change un peu et parfois beaucoup, output probable) </br>
 
 Algorithme non deterministe (Fermat)
 ```c
