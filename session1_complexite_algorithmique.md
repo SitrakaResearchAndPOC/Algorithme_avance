@@ -1,5 +1,11 @@
 # Complexité Algorithmique : 
 Dans l'exemple : utilisation de Windows avec CodeBlocks
+* Rigueur algorithmique (Rigueur en developpement : lire ou ecouter des auteurs pour pouvoir ecrire des poemes) :
+Compiler lire et essayez de ne pas faire de debugging pour voir l'erreur (seulement en lisant) </br>
+Pour une fonction  : essayez toujours d'avoir une idée en tête pour que compiler trois fois au maximum peut faire marcher le code  </br>
+Ecrire le code sur papier puis lire puis tester puis modifier puis relire puis retester (forcer la reflexion pour des travaux manuels) </br>
+Ne re-demander jamais à quelqu'un pour des technologies que vous avez connu et utilisé une fois mais oublier (obliger le cerveau à reflechir)   </br>
+
 * Complexité temporelle (combien de temps)
 Evaluation réelle de complexité temporelle en C (en ms) :
 ``` C
