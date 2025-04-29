@@ -1,4 +1,4 @@
-# Algorithme  : 
+# Complexité Algorithmique : 
 Dans l'exemple : utilisation de Windows avec CodeBlocks
 * Complexité temporelle (combien de temps)
 Evaluation réelle de complexité temporelle en C (en ms) :
