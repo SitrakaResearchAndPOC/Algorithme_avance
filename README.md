@@ -8,9 +8,9 @@
 
 
 
-[Mémoire et structure + Algomius]https://www.youtube.com/playlist?list=PLo53cbpzes8Yc32ySaebRzfnR8niPPJWt)  </br>
+[Mémoire et structure par Algomius]https://www.youtube.com/playlist?list=PLo53cbpzes8Yc32ySaebRzfnR8niPPJWt)  </br>
 [Algorithme de tri : Généralité + Algomius](https://www.youtube.com/watch?v=NxtuTW-e2JI&list=PLo53cbpzes8YitYTmH9Z2wxLt73sL_CJj&pp=iAQB)  </br>
-[ASSALI El Mehdi + Lasse9 ENSIAS 1A - M1.2.1 Structures de données](https://www.youtube.com/playlist?list=PLVmWahPwxZmU68vnxSOpXtNc2MSv7C4Ye)  </br>
+[ASSALI El Mehdi par Lasse9 ENSIAS 1A - M1.2.1 Structures de données](https://www.youtube.com/playlist?list=PLVmWahPwxZmU68vnxSOpXtNc2MSv7C4Ye)  </br>
 
 B-Tree : 
 [B-Tree1](https://www.youtube.com/@computerscienceclassexampl1504)  </br>
